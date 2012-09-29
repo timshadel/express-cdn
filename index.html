@@ -3,55 +3,47 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Express-cdn by niftylettuce</title>
+    <title>express-cdn by niftylettuce</title>
+
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
+    <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/niftylettuce/express-cdn">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/niftylettuce/express-cdn/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/niftylettuce/express-cdn/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
-
     <div class="wrapper">
+      <header>
+        <h1 class="header">express-cdn</h1>
+        <p class="header">Node.js module for delivering optimized, minified, mangled, gzipped, and CDN-hosted assets in Express using S3 and CloudFront.</p>
 
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/niftylettuce/express-cdn/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/niftylettuce/express-cdn/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/niftylettuce/express-cdn">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/niftylettuce">niftylettuce</a></p>
+
+
+      </header>
       <section>
-        <div id="title">
-          <h1>Express-cdn</h1>
-          <p>Node.js module for delivering optimized, minified, mangled, gzipped, and CDN-hosted assets in Express using S3 and CloudFront.</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/niftylettuce">niftylettuce</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
-        </div>
-
-        <h1>express-cdn <sup>0.0.3</sup>
+        <h1>express-cdn <sup>0.0.8</sup>
 </h1>
 
 <p>Node.js module for delivering optimized, minified, mangled, gzipped, and CDN-hosted assets in Express (currently by Amazon S3 and Amazon CloudFront).</p>
 
 <p>Follow <a href="http://twitter.com/niftylettuce" target="_blank">@niftylettuce</a> on Twitter for updates.</p>
 
-<p>Currently supports <code>express</code> version 2.x (not 3.x compatible yet).</p>
+<p>Like this module?  Check out <a href="https://github.com/niftylettuce/node-email-templates" target="_blank">node-email-templates</a>!</p>
 
-<p>Like this module?  You should also check out <a href="https://github.com/niftylettuce/node-email-templates" target="_blank">node-email-templates</a>!</p>
-
-<h2> README Contents</h2>
+<h2> Index</h2>
 
 <ul>
+<li><a href="#compatibility">Compatibility</a></li>
+<li><a href="#changelog">Changelog</a></li>
 <li><a href="#features">Features</a></li>
 <li><a href="#addon">Add-On Modules</a></li>
 <li><a href="#requests">Lazy Web Requests</a></li>
@@ -69,11 +61,42 @@
 </li>
 <li><a href="#contributors">Contributors</a></li>
 <li><a href="#license">License</a></li>
-</ul><p><a name="features"></a></p>
+</ul><h2>Compatibility</h2>
+
+<p>This module is compatible with Express versions <code>2.x.x</code> and <code>3.x.x</code>.</p>
+
+<h2>Changelog</h2>
+
+<ul>
+<li>
+<code>0.0.8</code>: Enabled string-only output for CDN assets.</li>
+</ul><p><strong>Example</strong>:</p>
+
+<div class="highlight"><pre><span class="p">-</span> <span class="k">var</span> <span class="n">href</span> <span class="k">=</span> <span class="nc">CDN</span><span class="o">(</span><span class="err">'</span><span class="o">/</span><span class="n">img</span><span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">foo</span><span class="o">.</span><span class="n">jpg</span><span class="err">'</span><span class="o">,</span> <span class="o">{</span> <span class="n">raw</span> <span class="k">:</span> <span class="kt">true</span> <span class="o">});</span>
+<span class="nt">a</span>(<span class="na">class=</span><span class="s">"fancybox"</span><span class="err">,</span> <span class="na">href=</span><span class="s">"#{href}"</span>)
+  <span class="err">!= </span><span class="nt">CDN</span>(<span class="err">'/</span><span class="na">img</span><span class="err">/</span><span class="na">small</span><span class="err">/</span><span class="na">foo</span><span class="err">.</span><span class="na">jpg</span><span class="err">',</span> <span class="err">{</span> <span class="na">alt</span> <span class="na">:</span> <span class="err">'</span><span class="na">Foo</span><span class="err">',</span> <span class="na">width</span> <span class="na">:</span> <span class="na">800</span><span class="err">,</span> <span class="na">height</span> <span class="na">:</span> <span class="na">600</span> <span class="err">}</span>)
+</pre></div>
+
+<ul>
+<li><p><code>0.0.7</code>: Removed CSS minification due to over-optimization of the <code>clean-css</code> module.</p></li>
+<li><p><code>0.0.6</code>: Added temporary support for CSS usage of <code>background-image</code>, <code>background</code>, and <code>contents</code> attributes by absolute image paths.</p></li>
+</ul><p><strong>Example</strong>:</p>
+
+<div class="highlight"><pre><span class="c">/* Valid - Proper way to write CSS with express-cdn */</span>
+<span class="nf">#example-valid</span> <span class="p">{</span>
+  <span class="k">background</span><span class="o">:</span> <span class="sx">url(/something.png)</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* Invalid - Don't do this! */</span>
+<span class="nf">#example-invalid</span> <span class="p">{</span>
+  <span class="k">background</span><span class="o">:</span> <span class="sx">url(../something.png)</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 
 <h2>Features</h2>
 
 <ul>
+<li>Automatic parsing of <code>background</code>, <code>background-image</code> and <code>content</code> for <code>url({{absoluteUrl}})</code> in stylesheets and scripts.</li>
 <li>Built-in optimization of images in production mode using <a href="http://optipng.sourceforge.net/">OptiPNG</a> and <a href="http://jpegclub.org/jpegtran/">JPEGTran</a>.</li>
 <li>Supports <a href="http://sass-lang.com/">Sass</a>, <a href="http://lesscss.org/">LESS</a>, and <a href="http://learnboost.github.com/stylus/">Stylus</a> using respective stylesheet compilers.</li>
 <li>JavaScript assets are mangled and minified using <a href="https://github.com/mishoo/UglifyJS/">UglifyJS</a>.</li>
@@ -84,9 +107,7 @@
 <li>Loads and processes assets per view (allowing you to minimize client HTTP requests).</li>
 <li>Combine commonly used assets together using a simple array argument.</li>
 <li>Uploads changed assets automatically and asynchronously to Amazon S3 (only in production mode) using <a href="https://github.com/LearnBoost/knox/">knox</a>.</li>
-</ul><p><a name="addon"></a></p>
-
-<h2>Add-on Modules (coming soon)</h2>
+</ul><h2>Add-on Modules (coming soon)</h2>
 
 <ul>
 <li>
@@ -97,21 +118,16 @@
 <a href="https://github.com/niftylettuce/express-cdn-cloudfiles">express-cdn-cloudfiles</a> - Rackspace CloudFiles</li>
 <li>
 <a href="https://github.com/niftylettuce/express-cdn-cloudflare">express-cdn-cloudflare</a> - CloudFlare and Amazon S3</li>
-</ul><p><a name="requests"></a></p>
-
-<h2>Lazy Web Requests</h2>
+</ul><h2>Lazy Web Requests</h2>
 
 <ul>
-<li>Automatic parsing of <code>CDN(...)</code> in stylesheets and scripts.</li>
 <li>Add options to pick CDN network (e.g. MaxCDN vs. Amazon vs. Rackspace)</li>
 <li>Add tests for all asset types.</li>
 <li>Modularization of <code>/lib/main.js</code> please!</li>
 <li>Support Express 3.x.x+ and utilize async with view helper.</li>
 <li>Convert from <code>fs.statSync</code> to <code>fs.stat</code> with callback for image assets modified timestamp hack.</li>
 <li>Investigate why Chrome Tools Audit returns leverage proxy cookieless jargon.</li>
-</ul><p><a name="how"></a></p>
-
-<h2>How does it work?</h2>
+</ul><h2>How does it work?</h2>
 
 <p>When the server is first started, the module returns a view helper depending on
 the server environment (production or development).  It also recursively
@@ -119,8 +135,6 @@ searches through your <code>viewsDir</code> for any views containing instances o
 <code>CDN(...)</code> view helper.  After parsing each instance and removing duplicates,
 it will use your S3 credentials to upload a new copy of the production-quality
 assets.  Enjoy <strong>:)</strong>.</p>
-
-<p><a name="environment"></a></p>
 
 <h2>Environment Differences</h2>
 
@@ -131,8 +145,6 @@ assets.  Enjoy <strong>:)</strong>.</p>
 <p><strong>Production Mode:</strong></p>
 
 <p>Assets are optimized, minified, mangled, gzipped, delivered by Amazon CloudFront CDN, and hosted from Amazon S3.</p>
-
-<p><a name="cdn-setup"></a></p>
 
 <h2>CDN Setup Instructions</h2>
 
@@ -195,50 +207,37 @@ assets.  Enjoy <strong>:)</strong>.</p>
 <li>Copy the generated Domain Name (e.g. <code>xyz.cloudfront.net</code>) to your clipboard.</li>
 <li>Log in to your-domain.com's DNS manager, add a new CNAME "hostname" of <code>cdn</code>, and paste the contents of your clipboard as the the "alias" or "points to" value.</li>
 <li>After the DNS change propagates, you can test your new CDN by visiting <a href="http://cdn.your-domain.com">http://cdn.your-domain.com</a> (the <code>index.html</code> file should get displayed).</li>
-</ol><p><a name="installation"></a></p>
-
-<h2>Installation</h2>
+</ol><h2>Installation</h2>
 
 <h3> Install Dependencies</h3>
 
 <h5>Linux</h5>
 
-<div class="highlight">
-<pre><span class="c"># install optipng and jpegtran packages</span>
+<div class="highlight"><pre><span class="c"># install optipng and jpegtran packages</span>
 sudo apt-get install optipng libjpeg-progs
-</pre>
-</div>
-
+</pre></div>
 
 <h5>OS X (with <a href="https://github.com/mxcl/homebrew/">Homebrew</a>)</h5>
 
-<div class="highlight">
-<pre><span class="c"># install optipng and jpegtran packages</span>
+<div class="highlight"><pre><span class="c"># install optipng and jpegtran packages</span>
 brew install optipng libjpeg
-</pre>
-</div>
-
+</pre></div>
 
 <h3>Install express-cdn module</h3>
 
-<div class="highlight">
-<pre>npm install express-cdn
-</pre>
-</div>
-
-
-<p><a name="usage"></a></p>
+<div class="highlight"><pre>npm install express-cdn
+</pre></div>
 
 <h2>Usage</h2>
 
 <h3>Server</h3>
 
-<div class="highlight">
-<pre><span class="c1">// # express-cdn</span>
+<div class="highlight"><pre><span class="c1">// # express-cdn</span>
 
 <span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">)</span>
   <span class="p">,</span> <span class="nx">path</span>    <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">)</span>
-  <span class="p">,</span> <span class="nx">app</span>     <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">createServer</span><span class="p">();</span>
+  <span class="p">,</span> <span class="nx">app</span>     <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">createServer</span><span class="p">()</span>
+  <span class="p">,</span> <span class="nx">semver</span>  <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'semver'</span><span class="p">);</span>
 
 <span class="c1">// Set the CDN options</span>
 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
@@ -265,8 +264,12 @@ brew install optipng libjpeg
   <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'public'</span><span class="p">)));</span>
 <span class="p">});</span>
 
-<span class="c1">// Add the dynamic view helper</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">dynamicHelpers</span><span class="p">({</span> <span class="nx">CDN</span><span class="o">:</span> <span class="nx">CDN</span> <span class="p">});</span>
+<span class="c1">// Add the view helper</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">semver</span><span class="p">.</span><span class="nx">lt</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">version</span><span class="p">,</span> <span class="s1">'3.0.0'</span><span class="p">))</span> <span class="p">{</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">locals</span><span class="p">({</span> <span class="nx">CDN</span><span class="o">:</span> <span class="nx">CDN</span><span class="p">()</span> <span class="p">});</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">dynamicHelpers</span><span class="p">({</span> <span class="nx">CDN</span><span class="o">:</span> <span class="nx">CDN</span> <span class="p">});</span>
+<span class="p">}</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">'basic'</span><span class="p">);</span>
@@ -275,16 +278,13 @@ brew install optipng libjpeg
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Server started: http://localhost:1337"</span><span class="p">);</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">1337</span><span class="p">);</span>
-</pre>
-</div>
-
+</pre></div>
 
 <h3>View Engine</h3>
 
 <h4>Jade</h4>
 
-<div class="highlight">
-<pre><span class="c">// #1 - Load an image</span>
+<div class="highlight"><pre><span class="c">// #1 - Load an image</span>
 <span class="err">!= </span><span class="nt">CDN</span>(<span class="err">'/</span><span class="na">img</span><span class="err">/</span><span class="na">sprite</span><span class="err">.</span><span class="na">png</span><span class="err">'</span>)
 
 <span class="c">// #2 - Load an image with a custom tag attribute</span>
@@ -307,9 +307,7 @@ brew install optipng libjpeg
 
 <span class="c">// #8 - Load and concat two stylesheets</span>
 <span class="err">!= </span><span class="nt">CDN</span>(<span class="err">[</span> <span class="err">'/</span><span class="na">css</span><span class="err">/</span><span class="na">style</span><span class="err">.</span><span class="na">css</span><span class="err">',</span> <span class="err">'/</span><span class="na">css</span><span class="err">/</span><span class="na">extra</span><span class="err">.</span><span class="na">css</span><span class="err">'</span> <span class="err">]</span>)
-</pre>
-</div>
-
+</pre></div>
 
 <h4>EJS</h4>
 
@@ -342,8 +340,7 @@ brew install optipng libjpeg
 
 <h4>Development Mode</h4>
 
-<div class="highlight">
-<pre><span class="c">&lt;!-- #1 - Load an image --&gt;</span>
+<div class="highlight"><pre><span class="c">&lt;!-- #1 - Load an image --&gt;</span>
 <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/img/sprite.png?v=1341214029"</span> <span class="nt">/&gt;</span>
 
 <span class="c">&lt;!-- #2 - Load an image with a custom tag attribute --&gt;</span>
@@ -369,9 +366,7 @@ brew install optipng libjpeg
 <span class="c">&lt;!-- #8 - Load and concat two stylesheets --&gt;</span>
 <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"/css/style.css?v=1341214029"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"/css/extra.css?v=1341214029"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="nt">/&gt;</span>
-</pre>
-</div>
-
+</pre></div>
 
 <h4>Production Mode</h4>
 
@@ -382,8 +377,7 @@ as it utilizes the timestamp for version control!  There is built-in magic to de
 individual assets were changed when concatenating multiple assets together (it adds the
 timestamps together and checks if the combined asset timestamp on S3 exists!).</p>
 
-<div class="highlight">
-<pre><span class="c">&lt;!-- #1 - Load an image --&gt;</span>
+<div class="highlight"><pre><span class="c">&lt;!-- #1 - Load an image --&gt;</span>
 <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://cdn.your-site.com/img/sprite.1341382571.png"</span> <span class="nt">/&gt;</span>
 
 <span class="c">&lt;!-- #2 - Load an image with a custom tag attribute --&gt;</span>
@@ -406,15 +400,9 @@ timestamps together and checks if the combined asset timestamp on S3 exists!).</
 
 <span class="c">&lt;!-- #8 - Load and concat two stylesheets --&gt;</span>
 <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://cdn.your-site.com/style%2Bextra.1341382571.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="nt">/&gt;</span>
-</pre>
-</div>
-
-
-<p><a name="optional"></a></p>
+</pre></div>
 
 <h2> Optional Features</h2>
-
-<p><a name="optional-logger"></a></p>
 
 <h3> Using a custom logger</h3>
 
@@ -422,8 +410,7 @@ timestamps together and checks if the combined asset timestamp on S3 exists!).</
 
 <p>The example below uses the <a href="https://github.com/flatiron/winston/">Winston</a> logging library.</p>
 
-<div class="highlight">
-<pre><span class="kd">var</span> <span class="nx">winston</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'winston'</span><span class="p">);</span>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">winston</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'winston'</span><span class="p">);</span>
 <span class="nx">winston</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">winston</span><span class="p">.</span><span class="nx">transports</span><span class="p">.</span><span class="nx">File</span><span class="p">,</span> <span class="p">{</span><span class="nx">filename</span><span class="o">:</span> <span class="s1">'somefile.log'</span><span class="p">});</span>
 
 <span class="c1">// Set the CDN options</span>
@@ -455,13 +442,9 @@ timestamps together and checks if the combined asset timestamp on S3 exists!).</
 <span class="c1">// Add the dynamic view helper</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">dynamicHelpers</span><span class="p">({</span> <span class="nx">CDN</span><span class="o">:</span> <span class="nx">CDN</span> <span class="p">});</span>
 
-</pre>
-</div>
-
+</pre></div>
 
 <p>Any output from express-cdn is now passed to <code>winston.info()</code> which writes to both <code>console</code> and <code>somefile.log</code>.</p>
-
-<p><a name="contributors"></a></p>
 
 <h2>Contributors</h2>
 
@@ -472,16 +455,23 @@ timestamps together and checks if the combined asset timestamp on S3 exists!).</
 </li>
 <li>Jon Keating <a href="mailto:jon@licq.org">jon@licq.org</a>
 </li>
-</ul><p><a name="license"></a></p>
-
-<h2>License</h2>
+<li>Andrew de Andrade <a href="mailto:andrew@deandrade.com.br">andrew@deandrade.com.br</a>
+</li>
+<li>
+<a href="http://www.joshisgross.com" target="_blank">Joshua Gross</a> <a href="mailto:josh@spandex.io">josh@spandex.io</a>
+</li>
+<li>Dominik Lessel <a href="mailto:info@rocketeleven.com">info@rocketeleven.com</a>
+</li>
+</ul><h2>License</h2>
 
 <p>MIT Licensed</p>
       </section>
-
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
-              <script type="text/javascript">
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
